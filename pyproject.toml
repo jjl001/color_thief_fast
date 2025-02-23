@@ -1,5 +1,5 @@
 [project]
-name = "npts"
+name = "color_thief_fast"
 version = "1.0.0"
 description = "extracting image theme colors"
 requires-python = ">=3.8"
