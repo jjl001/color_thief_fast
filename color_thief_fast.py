@@ -98,14 +98,16 @@ class ColorThiefFast:
                 quality settings, 1 is the highest quality, the bigger
                 the number, the faster the palette generation, but the
                 greater the likelihood that colors will be missed.
+            custom_processing:
+                Customize pixel processing functions.
         Returns:
             list: a list of tuple in the form (r, g, b) or (r, g, b, percent)
         """
-        image_array = np.reshape(self.image, (-1, 4))
-        image_array = image_array[::quality, :]
-
         if custom_processing is None:
             custom_processing = PixelsProcessor.get_valid_pixels
+
+        image_array = np.reshape(self.image, (-1, 4))
+        image_array = image_array[::quality, :]
 
         valid_pixels = custom_processing(image_array)
 
