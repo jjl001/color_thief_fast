@@ -1,6 +1,10 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "color_thief_fast"
-version = "1.0.0"
+version = "1.0.3"
 description = "extracting image theme colors"
 requires-python = ">=3.8"
 dependencies = [
@@ -18,3 +22,6 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[tool.setuptools]
+py-modules = ["color_thief_fast"]

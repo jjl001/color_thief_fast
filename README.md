@@ -11,6 +11,24 @@ numpy library.
    Support users to customize pixel processing according to their own needs, meeting diverse image processing
    requirements
 
+### Installation
+
+```shell
+pip install color-thief-fast
+```
+
+### Usage
+
+```python
+from color_thief_fast import ColorThiefFast
+
+color_thief = ColorThiefFast('/path/to/imagefile', return_percent=True)
+# get the dominant color
+dominant_color = color_thief.get_color(quality=1)
+# build a color palette
+palette = color_thief.get_palette(color_count=5)
+```
+
 ### Thanks
 
 Thanks to Lokesh Dhakar for his [original work](https://github.com/lokesh/color-thief/).  
