@@ -265,7 +265,7 @@ class MMCQ:
         pq.push(vbox)
 
         # inner function to do the iteration
-        def iter_(lh: "PQueue", target: int | float):
+        def iter_(lh: "PQueue", target: Union[int, float]):
             n_color = 1
             n_iter = 0
             while n_iter < MMCQ.MAX_ITERATION:
@@ -312,12 +312,12 @@ class VBox:
     """3d color space box"""
 
     def __init__(self, r1, r2, g1, g2, b1, b2, histo: Dict[int, int], total_pixel_count: int):
-        self.r1 = r1
-        self.r2 = r2
-        self.g1 = g1
-        self.g2 = g2
-        self.b1 = b1
-        self.b2 = b2
+        self.r1 = int(r1)
+        self.r2 = int(r2)
+        self.g1 = int(g1)
+        self.g2 = int(g2)
+        self.b1 = int(b1)
+        self.b2 = int(b2)
         self.histo = histo
         self.total_pixel_count = total_pixel_count
 
@@ -348,17 +348,17 @@ class VBox:
 
         total = histo_num.sum()
         if total:
-            r_avg = int(r_sum / total)
-            g_avg = int(g_sum / total)
-            b_avg = int(b_sum / total)
+            r_avg = r_sum / total
+            g_avg = g_sum / total
+            b_avg = b_sum / total
         else:
-            r_avg = int(mult * (self.r1 + self.r2 + 1) / 2)
-            g_avg = int(mult * (self.g1 + self.g2 + 1) / 2)
-            b_avg = int(mult * (self.b1 + self.b2 + 1) / 2)
+            r_avg = mult * (self.r1 + self.r2 + 1) / 2
+            g_avg = mult * (self.g1 + self.g2 + 1) / 2
+            b_avg = mult * (self.b1 + self.b2 + 1) / 2
 
-        r_avg = np.clip(r_avg, 0, 255)
-        g_avg = np.clip(g_avg, 0, 255)
-        g_avg = np.clip(g_avg, 0, 255)
+        r_avg = int(np.clip(r_avg, 0, 255))
+        g_avg = int(np.clip(g_avg, 0, 255))
+        b_avg = int(np.clip(b_avg, 0, 255))
         return r_avg, g_avg, b_avg
 
     @functools.cached_property
